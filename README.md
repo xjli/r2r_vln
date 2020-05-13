@@ -37,7 +37,7 @@ CUDA_VISIBLE_DEVICES=0 python ./tasks/R2R/train.py --panoramic True --result_dir
 ## Citations
 Please consider citing this paper if you use the code:
 ```
-@article{li2020oscar,
+@article{li2019robust,
   title={Robust Navigation with Language Pretraining and Stochastic Sampling},
   author={Li, Xiujun and Li, Chunyuan and Xia, Qiaolin and Bisk, Yonatan and Celikyilmaz, Asli and Gao, Jianfeng and Smith, Noah and Choi, Yejin},
   journal={EMNLP},
