@@ -143,48 +143,6 @@ if __name__ == "__main__":
 
     parser.add_argument('--test_A', action='store_true', help='testing_settingA')
 
-    # args = '--panoramic True ' \
-    #        '--action_space -1 ' \
-    #        '--result_dir /home/xiul/Programs/exps/tmp/test/results/ ' \
-    #        '--snapshot_dir /home/xiul/Programs/exps/tmp/test/snapshots/ ' \
-    #        '--plot_dir /home/xiul/Programs/exps/tmp/test/plots/ ' \
-    #        '--max_episode_len 8 ' \
-    #        '--att_ctx_merge mean ' \
-    #        '--n_iters 1500 ' \
-    #        '--batch_size 64 --log_every 64 --feedback_method teacher ' \
-    #        '--enc_hidden_size 1024 ' \
-    #        '--hidden_size 1024 '
-    # args = parser.parse_args(args.split())
-
-    # args = '--action_space -1 ' \
-    #        '--result_dir /home/xiul/Programs/exps/tmp/test/results/ ' \
-    #        '--snapshot_dir /home/xiul/Programs/exps/tmp/test/snapshots/ ' \
-    #        '--plot_dir /home/xiul/Programs/exps/tmp/test/plots/ ' \
-    #        '--att_ctx_merge mean --batch_size 8 --log_every 24 --feedback_method teacher --clip_gradient_norm 0 ' \
-    #        '--ss_n_pretrain_iters 100 --pretrain_n_iters 200 --ss_n_iters 200 --n_iters 300 ' \
-    #        '--enc_hidden_size 1024 --hidden_size 1024 --encoder_type bert --top_lstm True --transformer_update False '
-           #'--use_pretrain --pretrain_n_sentences 4 '\
-           #'--pretrain_splits sample_seed10_20_30_40_50_data_aug_paths '\
-
-    # args = '--feedback_method teacher ' \
-    #        '--result_dir /home/xql/Source/Subgoal/tasks/R2R/exps/test_trans_mean/results/ ' \
-    #        '--snapshot_dir /home/xql/Source/Subgoal/tasks/R2R/exps/test_trans_mean/snapshots/ ' \
-    #        '--plot_dir /home/xql/Source/Subgoal/tasks/R2R/exps/test_trans_mean/plots/ ' \
-    #        '--ss_n_iters 20000 ' \
-    #        '--dropout_ratio 0.4 ' \
-    #        '--dec_h_type vc --schedule_ratio 0.3 ' \
-    #        '--optm Adam --clip_gradient_norm 0 --log_every 64 ' \
-    #        '--action_space -1 ' \
-    #        '--train_score_name sr_unseen ' \
-    #        '--n_iters 40000 ' \
-    #        '--enc_hidden_size 1024 --hidden_size 1024 ' \
-    #        '--bidirectional True ' \
-    #        '--batch_size 10 ' \
-    #        '--encoder_type transformer ' \
-    #        '--transformer_emb_size 512 --top_lstm True ' \
-    #        '--att_ctx_merge mean '
-    #args = parser.parse_args(args.split())
-
     args = parser.parse_args()
     params = vars(args)
 
