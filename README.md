@@ -16,14 +16,19 @@ unzip $MODEL_NAME.zip -d $MODEL_DIR
 ## Installation
 Please follow [R2R](https://github.com/peteanderson80/Matterport3DSimulator/tree/master/tasks/R2R) for the environment setup.
 
+## Run Training
+Script to run training.
+```bash
+TBA
+```
 
 ## Run Validation and Test
-Script to play with the checkpoint on the paper (spl_53).
+Script to play with the checkpoint on the paper (val unseen spl=55).
 ```bash
 CUDA_VISIBLE_DEVICES=0 python ./tasks/R2R/train.py --panoramic True --result_dir ./test --snapshot_dir ./snapshots --plot_dir ./plot --action_space -1 --n_iters 10 --att_ctx_merge mean --n_iters_resume 63480 --sc_after 0 --sc_score_name sr_unseen --train False --val_splits val_seen,val_unseen --enc_hidden_size 1024 --hidden_size 1024 --feedback_method teacher --clip_gradient 0.1 --clip_gradient_norm 0 --dec_h_type vc --schedule_ratio -1.0 --dump_result --bidirectional True --optm Adamax --encoder_type bert --top_lstm True --transformer_update False --batch_size 24 --pretrain_model_path path_to/spl_53/snapshots/
 ```
 
-Script to play with a better checkpoint (spl_54.4).
+Script to play with a better checkpoint (val unseen spl=56.2).
 ```bash
 CUDA_VISIBLE_DEVICES=0 python ./tasks/R2R/train.py --panoramic True --result_dir ./test --snapshot_dir ./snapshots --plot_dir ./plot --action_space -1 --n_iters 10 --att_ctx_merge mean --n_iters_resume 68576 --sc_after 0 --sc_score_name sr_unseen --train False --val_splits val_seen,val_unseen --enc_hidden_size 1024 --hidden_size 1024 --feedback_method teacher --clip_gradient 0.1 --clip_gradient_norm 0 --dec_h_type vc --schedule_ratio -1.0 --dump_result --bidirectional True --optm Adamax --encoder_type bert --top_lstm True --transformer_update False --batch_size 24 --pretrain_model_path path_to/spl_54.4/snapshots/
 ```
