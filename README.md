@@ -5,22 +5,37 @@ This repository contains source code and trained checkpoint to reproduce the res
 
 
 ## Download
-We provide two pre-trained models of Bert-base.
+We provide two trained model checkpoints of Bert-base.
 ```bash
 wget https://xiuldlstorage.blob.core.windows.net/r2r/public/emnlp/$MODEL_NAME.zip
 unzip $MODEL_NAME.zip -d $MODEL_DIR
 ```
 `MODEL_NAME` could be `spl_53`, `spl_54.4`.
 
+Download the generated paths for data augmentation.
+```bash
+wget https://xiuldlstorage.blob.core.windows.net/r2r/public/emnlp/data/R2R_bi_12700_seed10-60_literal_speaker_data_aug_paths_unk_bert.txt
+```
+
 
 ## Installation
 Please follow [R2R](https://github.com/peteanderson80/Matterport3DSimulator/tree/master/tasks/R2R) for the environment setup.
+```bash
+# install bert package
+pip install pytorch-pretrained-bert
+```
 
 ## Run Training
-Script to run training.
+Script to run training (not update Bert).
 ```bash
-TBA
+CUDA_VISIBLE_DEVICES=0 python ./tasks/R2R/train.py --feedback_method teacher --bidirectional True --encoder_type bert --top_lstm True --transformer_update False --batch_size 20 --log_every 40 --pretrain_n_sentences 6 --pretrain_splits bi_12700_seed10-60_literal_speaker_data_aug_paths_unk --save_ckpt 10000 --ss_n_pretrain_iters 50000 --pretrain_n_iters 60000 --ss_n_iters 60000 --n_iters 70000 --dropout_ratio 0.4 --dec_h_type vc --schedule_ratio 0.3 --optm Adamax --att_ctx_merge mean --clip_gradient_norm 0 --clip_gradient 0.1 --use_pretrain --action_space -1 --pretrain_score_name sr_unseen --train_score_name sr_unseen --enc_hidden_size 1024 --hidden_size 1024 --result_dir ./base/results/ --snapshot_dir ./base/snapshots/ --plot_dir ./base/plots/
 ```
+
+Script to run finetuning (update Bert).
+```bash
+CUDA_VISIBLE_DEVICES=0 python ./tasks/R2R/train.py --feedback_method teacher --dropout_ratio 0.4 --dec_h_type vc --optm Adamax --schedule_ratio 0.2 --att_ctx_merge mean --clip_gradient_norm 0 --clip_gradient 0.1 --log_every 32 --action_space -1 --n_iters 34000 --train_score_name sr_unseen --enc_hidden_size 1024 --hidden_size 1024 --result_dir ./base/results/ --snapshot_dir ./base/snapshots/ --plot_dir ./base/plots/ --n_iters_resume N --ss_n_iters N+10000 --save_ckpt 512 --bidirectional True --encoder_type bert --top_lstm True --transformer_update True --batch_size 16 --learning_rate 5e-5
+```
+N is the iteration of the best checkpoint from the above training.
 
 ## Run Validation and Test
 Script to play with the checkpoint on the paper (val unseen spl=55).
