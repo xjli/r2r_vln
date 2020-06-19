@@ -14,11 +14,13 @@ unzip $MODEL_NAME.zip -d $MODEL_DIR
 
 Download the generated paths for data augmentation.
 ```bash
+wget https://xiuldlstorage.blob.core.windows.net/r2r/public/emnlp/data/R2R_bi_12700_seed10-60_literal_speaker_data_aug_paths_unk.json
 wget https://xiuldlstorage.blob.core.windows.net/r2r/public/emnlp/data/R2R_bi_12700_seed10-60_literal_speaker_data_aug_paths_unk_bert.txt
 ```
 
 Download the bi-directional speaker generated paths for data augmentation.
 ```bash
+wget https://xiuldlstorage.blob.core.windows.net/r2r/public/emnlp/data/R2R_bi_12700_seed10-60_literal_speaker_data_augmentation_paths.json
 wget https://xiuldlstorage.blob.core.windows.net/r2r/public/emnlp/data/R2R_bi_12700_seed10-60_literal_speaker_data_augmentation_paths_bert.txt
 ```
 
